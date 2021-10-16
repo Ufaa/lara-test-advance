@@ -16,3 +16,6 @@ use App\Http\Controllers\FaqController;
 
 Route::get('/', [FaqController::class, 'index']);
 Route::post('/', [FaqController::class, 'post']);
+Route::get('/add', [FaqController::class, 'add']);
+Route::post('/add', [FaqController::class, 'create']);
+Route::resource('faqs', FaqController::class);
