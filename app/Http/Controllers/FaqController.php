@@ -9,36 +9,13 @@ class FaqController extends Controller
 {
     public function index()
     {
-        $items =  faq::all();
-
-        return view('index', $items);
-    }
-
-    public function post(Request $request)
-    {
-        $content = $request->content;
-        $item = [
-            'content' => $content . 'と入力しましたね'
-        ];
-        return view('thanks', $item);
-    }
-
-    public function store(Request $request)
-    {
-        $validate_rule = [
-            'content' => 'required|max:20',
-        ];
-        $this->validate($request, $validate_rule);
-
-        $todo = new faq();
-        $todo->content = $request->content;
-        $todo->save();
-        return redirect('/');
+        $items = faq::all();
+        return view('index', ['items' => $items]);
     }
 
     public function add()
     {
-        return view('thanks');
+        return view('index');
     }
 
     public function create(Request $request)
@@ -46,6 +23,7 @@ class FaqController extends Controller
         $this->validate($request, faq::$rules);
         $form = $request->all();
         faq::create($form);
-        return redirect('/');
+        $request->timestamps = false; 
+        return view('thanks');
     }
 }

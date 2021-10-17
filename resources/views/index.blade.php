@@ -7,6 +7,8 @@
   <title>Laravelテスト応用編</title>
 </head>
 
+
+
 <body>
   <div class="faq-box">
     <form action="/" method="POST">
@@ -20,7 +22,6 @@
       <button type="submit" class="btn btn-primary">送信する</button>
     </form>
   </div>
-
 
 </body>
 

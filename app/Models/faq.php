@@ -9,10 +9,25 @@ class faq extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'address'];
+    // table名を指定 もしかして要らない？
+    protected $table = 'faqs';
+    public $timestamps = false;
 
+    // カラムを指定
+    protected $fillable = [
+        'name', 'address'
+    ];
+
+    // データの追加？？
     public static $rules = array(
         'name' => 'required',
-        'address' => 'required',
+        'address' => 'required'
     );
+
+    public function getDetail()
+    {
+        $txt = 'ID:' . $this->id . ' ' . $this->name . ' ' . $this->address;
+        return $txt;
+    }
 }
+
